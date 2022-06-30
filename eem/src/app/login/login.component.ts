@@ -38,8 +38,9 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('token',result.token);
             this._route.navigate(['/side-menu']);
           }else {
-            alert("User name and password incorrect")
-            console.log(result);
+            this._route.navigate(['/dash']);
+            //alert("User name and password incorrect")
+            //console.log(result);
           }
         })
       }
