@@ -25,6 +25,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { EmployeedataComponent } from './employeedata/employeedata.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FooterComponent,
     HeaderComponent,
     SidebarComponent,
-    DashboardComponent
+    DashboardComponent,
+    EmployeedataComponent
   ],
   imports: [
     BrowserModule,

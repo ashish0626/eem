@@ -1,26 +1,24 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment';
-
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class EmplregService {
   errorMsg: any;
+
   constructor(private http:HttpClient) { }
-  login(data: any):Observable<any>{
-   // alert(data.emailid)
-    return this.http.post("http://20.115.10.86:7001/checkCredentials",data,{responseType: 'json'}).pipe(
-      // catchError(error => {
-      //     this.errorMsg = error.message;
-      //     return of([this.getServerErrorMessage]);
-      // })
+
+  public regProcess(data : any):Observable<any>{
+    return this.http.post("http://40.74.233.57:8021/api/PlaceInfo",data,{responseType: 'json'}).pipe(
+      catchError(error => {
+          this.errorMsg = error.message;
+          return of([this.getServerErrorMessage]);
+      })
   );
   }
-  
- private getServerErrorMessage(error: HttpErrorResponse): string {
+  private getServerErrorMessage(error: HttpErrorResponse): string {
     switch (error.status) {
         case 404: {
           return `Not Found: ${error.message}`;

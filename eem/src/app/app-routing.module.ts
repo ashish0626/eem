@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DefaultComponent } from './default/default.component';
+import { EmployeedataComponent } from './employeedata/employeedata.component';
 
 import { LoginComponent } from './login/login.component';
 
@@ -29,7 +30,10 @@ const routes: Routes = [
   children: [{
     path: 'dash',
     component: DashboardComponent
-  },
+  },{
+    path:'employee',
+    component: EmployeedataComponent
+  } 
   ]
 }
 ];
