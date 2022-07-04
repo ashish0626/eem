@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DataTableComponent } from './components/data-table/data-table.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DefaultComponent } from './default/default.component';
 import { EmployeedataComponent } from './employeedata/employeedata.component';
@@ -7,14 +8,6 @@ import { EmployeedataComponent } from './employeedata/employeedata.component';
 import { LoginComponent } from './login/login.component';
 
 
-// const routes: Routes = [
-//   {path:'',component:LoginComponent},
-//   {path:'default',component:DefaultComponent},
-  
-//   {path:'dash',component:DashboardComponent},
-//   {path:'login',component:LoginComponent},
-
-// ];
 const routes: Routes = [
   {
     path: '',
@@ -33,6 +26,10 @@ const routes: Routes = [
   },{
     path:'employee',
     component: EmployeedataComponent
+  },
+  {
+    path:'data',
+    component: DataTableComponent
   } 
   ]
 }

@@ -26,6 +26,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { EmployeedataComponent } from './employeedata/employeedata.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { DataTableComponent } from './components/data-table/data-table.component';
+import { PersonFormDialogComponent } from './components/person-form-dialog/person-form-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +40,10 @@ import { EmployeedataComponent } from './employeedata/employeedata.component';
     HeaderComponent,
     SidebarComponent,
     DashboardComponent,
-    EmployeedataComponent
+    EmployeedataComponent,
+    DataTableComponent,
+    ConfirmationDialogComponent,
+    PersonFormDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +64,9 @@ import { EmployeedataComponent } from './employeedata/employeedata.component';
     MatListModule,
     MatTableModule,
     MatMenuModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [
     

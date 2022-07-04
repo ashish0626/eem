@@ -3,6 +3,8 @@ import { DashboardService } from '../dashboard.service';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table'
+import { ConfirmationDialogComponent } from '../components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface PeriodicElement {
   name: string;
@@ -45,12 +47,13 @@ export class DashboardComponent implements OnInit {
   pieChart = [];
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  public columnsToDisplay: string[] = [...this.displayedColumns, 'actions'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService,public dialog: MatDialog) { }
 
   ngOnInit() {
     
@@ -64,5 +67,14 @@ export class DashboardComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  delete(id: any) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+       // this.personsService.remove(id);
+      }
+    });
   }
 }
