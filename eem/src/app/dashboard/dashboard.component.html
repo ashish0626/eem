@@ -9,9 +9,10 @@
 <br>
 
 <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-    <div fxFlex="100">
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource">
+    <div fxFlex="100" #TABLE>
+        <div class="mat-elevation-z8"  >
+          <button mat-raised-button color="primary" (click)="ExportTOExcel()">Export as Excel</button></div>
+            <table mat-table [dataSource]="dataSource" #table>
 
                 <!-- Position Column -->
                 <ng-container matColumnDef="position">
@@ -57,7 +58,7 @@
 
     </div>
     
-</div>
+
 
 <br>
 <br>

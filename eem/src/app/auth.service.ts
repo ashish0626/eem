@@ -12,11 +12,11 @@ export class AuthService {
   constructor(private http:HttpClient) { }
   login(data: any):Observable<any>{
    // alert(data.emailid)
-    return this.http.post("http://20.115.10.86:7001/checkCredentials",data,{responseType: 'json'}).pipe(
-      // catchError(error => {
-      //     this.errorMsg = error.message;
-      //     return of([this.getServerErrorMessage]);
-      // })
+    return this.http.post("http://localhost:49356/api/Auth/Auth",data,{responseType: 'json'}).pipe(
+      catchError(error => {
+          this.errorMsg = error.message;
+          return of([this.getServerErrorMessage]);
+      })
   );
   }
   

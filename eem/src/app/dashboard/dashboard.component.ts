@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table'
 import { ConfirmationDialogComponent } from '../components/confirmation-dialog/confirmation-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+
+ import * as XLSX from 'xlsx';
 
 export interface PeriodicElement {
   name: string;
@@ -49,7 +51,7 @@ export class DashboardComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   public columnsToDisplay: string[] = [...this.displayedColumns, 'actions'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-
+  @ViewChild('TABLE') table: ElementRef | undefined;
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
@@ -77,4 +79,15 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+  ExportTOExcel()
+  {
+    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table?.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    
+    /* save to file */
+    XLSX.writeFile(wb, 'SheetJS.xlsx');
+    
+  }
+
 }

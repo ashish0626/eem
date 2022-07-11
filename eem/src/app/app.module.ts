@@ -31,6 +31,12 @@ import { DataTableComponent } from './components/data-table/data-table.component
 import { PersonFormDialogComponent } from './components/person-form-dialog/person-form-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AppLoginComponent } from './app-login/app-login.component';
+import { TokenInterceptor } from './token-interceptor';
+
+import {CdkTableModule} from '@angular/cdk/table';
+import { TableBasicComponent } from './table-basic/table-basic.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +49,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     EmployeedataComponent,
     DataTableComponent,
     ConfirmationDialogComponent,
-    PersonFormDialogComponent
+    PersonFormDialogComponent,
+    AppLoginComponent,
+    
+    TableBasicComponent
   ],
   imports: [
     BrowserModule,
@@ -66,10 +75,16 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatMenuModule,
     MatPaginatorModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    CdkTableModule,
+  
   ],
   providers: [
-    
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptor,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

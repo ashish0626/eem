@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './authguard.guard';
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DefaultComponent } from './default/default.component';
 import { EmployeedataComponent } from './employeedata/employeedata.component';
 
 import { LoginComponent } from './login/login.component';
-
+import {AppLoginComponent} from './app-login/app-login.component'
+import { TableBasicComponent } from './table-basic/table-basic.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component:AppLoginComponent
+  // },
   {
     path: '',
     component:LoginComponent
@@ -22,21 +28,29 @@ const routes: Routes = [
   component: DefaultComponent,
   children: [{
     path: 'dash',
-    component: DashboardComponent
+    component: DashboardComponent,
+    //canActivate: [AuthGuard]
   },{
     path:'employee',
-    component: EmployeedataComponent
+    component: EmployeedataComponent,
+    //canActivate: [AuthGuard]
   },
   {
     path:'data',
-    component: DataTableComponent
-  } 
+    component: DataTableComponent,
+    canActivate: [AuthGuard]
+  } ,
+  {
+    path: 'table',
+    component:TableBasicComponent
+  },
   ]
 }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard],
 })
 export class AppRoutingModule { }

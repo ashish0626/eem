@@ -3,15 +3,25 @@
         <mat-toolbar color="primary">Login Page</mat-toolbar>
         <form  fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup" (ngSubmit)="loginProcess()">
             <mat-form-field>
-            <input matInput placeholder="Email ID" formControlName="emailid"/>
+            <input matInput placeholder="Username" formControlName="Username"/>
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="Password" placeholder="Password" formControlName="userpwd"/>
+                <input matInput type="password" placeholder="Password" formControlName="Password"/>
             </mat-form-field>
             <button mat-raised-button type="submit">Login</button>
-            
+            <span>{{ msg }}</span>
         </form>
-        <!-- <button (click)="GetUser()">Test </button> -->
-        <!-- <button mat-raised-button type="button" (click)="publicData()">PublicData</button> -->
     </mat-card>
 </div>
+
+
+<!-- <div>
+    <p>
+        login works!
+      </p>
+      <input type="text" #u1 /><br>
+      <input type="password" #p2 /><br/>
+      <button (click)="check(u1.value, p2.value)">Login</button>
+      <br/>
+      <span>{{ msg }}</span>
+</div> -->

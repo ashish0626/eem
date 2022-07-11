@@ -5,6 +5,7 @@ import { AuthService } from '../auth.service';
 //import { CrudService } from '../crud.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from '../crud.service';
+import { MyServiceService } from '../my-service.service';
 
 
 @Component({
@@ -20,32 +21,32 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private crudService: CrudService,
+    private service: MyServiceService,
     // private crud:CrudService,
     private _route: Router
   ) { }
+  msg = "";
 
   ngOnInit() {
     this.initform();
   }
   initform() {
     this.formGroup = new FormGroup({
-      emailid: new FormControl('', [Validators.required]),
-      userpwd: new FormControl('', [Validators.required])
+      Username: new FormControl('', [Validators.required]),
+      Password : new FormControl ('',[Validators.required])
     });
   }
   public loginProcess() {
-   // this.abc = (this.formGroup.get('emailid').value);
-    if (this.formGroup.valid) {
-      this._route.navigate(['/dash']);
+   if (this.formGroup.valid) {
+      
       this.authService.login(this.formGroup.value).subscribe(result => {
         if (result.message == "Success") {
+            localStorage.setItem('token',result.token);
           this._route.navigate(['/dash']);
-          //localStorage.setItem('token',result.token);
-          //this._route.navigate(['/side-menu']);
+          
         } else {
-          this._route.navigate(['/']);
-          alert("Email id and password incorrect")
-          console.log(result);
+          this._route.navigate(['/dash']);
+         // this.msg = 'Invalid username or password';
         }
       })
     }
@@ -59,4 +60,13 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  check(uname: string, p: string) {
+    var output = this.service.checkusernameandpassword(uname, p);
+    if (output == true) {
+      this._route.navigate(['/dashboard']);
+    }
+    else {
+      this.msg = 'Invalid username or password';
+    }
+  }
 }

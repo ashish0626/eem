@@ -11,12 +11,15 @@ export class CrudService {
   constructor(private http:HttpClient) { }
 
  public getpublicdata():Observable<any>{
-  return this.http.post("http://20.115.10.86:7001/getData",{responseType: 'text'}).pipe(
+  return this.http.post("http://20.115.10.86:7001/getData",{responseType: 'json'}).pipe(
    // catchError(this.handleError)
     );
+    
   }
   handleError(error: HttpErrorResponse): any {
     console.log("User Not found");
       return (error);
   }
+
+  
 }
