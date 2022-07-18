@@ -36,6 +36,7 @@ import { TokenInterceptor } from './token-interceptor';
 
 import {CdkTableModule} from '@angular/cdk/table';
 import { TableBasicComponent } from './table-basic/table-basic.component';
+import { EmpdashboardComponent } from './empdashboard/empdashboard.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { TableBasicComponent } from './table-basic/table-basic.component';
     PersonFormDialogComponent,
     AppLoginComponent,
     
-    TableBasicComponent
+    TableBasicComponent,
+          EmpdashboardComponent
   ],
   imports: [
     BrowserModule,

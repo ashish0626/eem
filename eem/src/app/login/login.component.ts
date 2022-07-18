@@ -2,22 +2,30 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
-//import { CrudService } from '../crud.service';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from '../crud.service';
 import { MyServiceService } from '../my-service.service';
 
+import { empresponse } from '../empresponse';
+
+ 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
   public books: any;
   public status: any;
-  public abc: string | undefined;
+  
   formGroup: FormGroup | any;
+  Empresponse: empresponse[] = [];
+  user:any
+  
+
   constructor(
     private authService: AuthService,
     private crudService: CrudService,
@@ -26,9 +34,10 @@ export class LoginComponent implements OnInit {
     private _route: Router
   ) { }
   msg = "";
-
+  
   ngOnInit() {
     this.initform();
+    
   }
   initform() {
     this.formGroup = new FormGroup({
@@ -36,6 +45,7 @@ export class LoginComponent implements OnInit {
       Password : new FormControl ('',[Validators.required])
     });
   }
+  
   public loginProcess() {
    if (this.formGroup.valid) {
       
@@ -52,13 +62,7 @@ export class LoginComponent implements OnInit {
     }
   }
    
-  public GetUser(){
-    this.crudService.getpublicdata().subscribe(result=>{
-      this.books = result;
-      alert(this.books);
-      console.log(result)
-    })
-  }
+  
 
   check(uname: string, p: string) {
     var output = this.service.checkusernameandpassword(uname, p);
@@ -69,4 +73,6 @@ export class LoginComponent implements OnInit {
       this.msg = 'Invalid username or password';
     }
   }
+
+ 
 }

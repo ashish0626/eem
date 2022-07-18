@@ -9,6 +9,7 @@ import { EmployeedataComponent } from './employeedata/employeedata.component';
 import { LoginComponent } from './login/login.component';
 import {AppLoginComponent} from './app-login/app-login.component'
 import { TableBasicComponent } from './table-basic/table-basic.component';
+import { EmpdashboardComponent } from './empdashboard/empdashboard.component';
 
 const routes: Routes = [
   // {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'table',
     component:TableBasicComponent
+  },
+  {
+    path: 'empdashboard',
+    component:EmpdashboardComponent
   },
   ]
 }

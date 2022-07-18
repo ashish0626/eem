@@ -1,0 +1,26 @@
+
+<div fxFlex="100" #TABLE>
+    <table>
+        <thead>
+            <tr>
+                <!-- <th>#</th> -->
+                <th> Name</th>
+                <th>LastName</th>
+                <th>EmailID</th>
+                <th>Password</th>
+                <th>Role</th>
+                <th><button mat-raised-button color="primary" (click)="ExportTOExcel()">Export as Excel</button></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let empresponse of user">
+                <td>{{empresponse.Name}}</td>
+                <td>{{empresponse.LastName}}</td>
+                <td>{{empresponse.EmailID}}</td>
+                <td>{{empresponse.Password}}</td>
+                <td>{{empresponse.Role}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
