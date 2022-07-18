@@ -50,13 +50,13 @@ export class LoginComponent implements OnInit {
    if (this.formGroup.valid) {
       
       this.authService.login(this.formGroup.value).subscribe(result => {
-        if (result.message == "Success") {
-            localStorage.setItem('token',result.token);
+        if (result.message == "true") {
+            //localStorage.setItem('token',result.token);
           this._route.navigate(['/dash']);
           
         } else {
-          this._route.navigate(['/dash']);
-         // this.msg = 'Invalid username or password';
+          //this._route.navigate(['/dash']);
+          this.msg = 'Invalid username or password';
         }
       })
     }
