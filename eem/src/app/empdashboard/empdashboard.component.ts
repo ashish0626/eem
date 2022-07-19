@@ -28,24 +28,20 @@ export class EmpdashboardComponent implements OnInit {
     XLSX.writeFile(wb, 'SheetJS.xlsx');
     
   }
-  public Delete (emailid : string){
-   // alert(emailid)
-    this.crudService.delete(emailid).subscribe(data =>{
-      
-      console.warn("data",data);
-      this.user=data;
-    })
-  }
+  
 
   public deleteuser(emailid : string) {
    
        //alert(emailid)
        this.crudService.deleteuser(emailid).subscribe(result => {
-       if (result == "True") {
+        //alert(result)
+       if (result == true) {
              
-           alert (result);
+           //alert (result);
            
-         } 
+         }else if(result == false) {
+          //alert (result);
+         }
        })
      }
    

@@ -52,29 +52,22 @@ export class CrudService {
     return this.http.get(url);
   }
   
-  delete(emailid : string){
-    alert(emailid)
-    let url ="http://20.115.10.86:7003/removeUser" + emailid;
-    return this.http.get(url); 
-  }
-
-  createuser1(fname:string,lname:string,emailid : string,userpwd:string,userRole:string){
-    let url ="http://20.115.10.86:7003/addUser" + fname + lname + emailid + userpwd +userRole;
-    return this.http.get(url);
-  }
+  
 
   createuser(data: any):Observable<any>{
     // alert(data.emailid)
-     return this.http.post("http://20.115.10.86:7003/addUser",data,{responseType: 'json'}).pipe(
+     return this.http.post(this.apiServer + "addUser",data,{responseType: 'json'}).pipe(
        catchError(error => {
            this.errorMsg = error.message;
            return of([this.getServerErrorMessage]);
        })
    );
    }
-   deleteuser(emailid : string):Observable<any>{
-     alert(emailid)
-     return this.http.post("http://20.115.10.86:7003/removeUser",emailid,{responseType: 'json'}).pipe(
+   deleteuser(emailid : any):Observable<any>{
+
+    
+     //alert(emailid)
+     return this.http.post(this.apiServer + "removeUser",{emailid: emailid},{responseType: 'json'}).pipe(
        catchError(error => {
            this.errorMsg = error.message;
            return of([this.getServerErrorMessage]);
