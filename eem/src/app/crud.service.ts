@@ -74,6 +74,14 @@ export class CrudService {
        })
    );
    }
+   usertoadmin(emailid : any):Observable<any>{
+    return this.http.post(this.apiServer + "makeAdmin",{emailid: emailid},{responseType: 'json'}).pipe(
+      catchError(error => {
+          this.errorMsg = error.message;
+          return of([this.getServerErrorMessage]);
+      })
+  );
+  }
    ImportData (emailid : any){
     //alert(emailid)
     return this.http.post(this.apiServer + "excel",{emailid: emailid},{responseType: 'json'}).pipe(
