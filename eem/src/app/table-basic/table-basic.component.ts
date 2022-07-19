@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { CrudService } from '../crud.service';
 type AOA = any[][];
+
 @Component({
   selector: 'app-table-basic',
   templateUrl: './table-basic.component.html',
@@ -15,6 +16,9 @@ export class TableBasicComponent {
   constructor(private crudService: CrudService,) { }
 
   ngOnInit(): void {
+    this.emailid= localStorage.getItem('email');
+    //alert (this.emailid)
+    //console.warn(localStorage.getItem('email'));
   }
   onFileChange(evt: any) {
     /* wire up file reader */

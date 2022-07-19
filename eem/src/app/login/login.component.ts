@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   formGroup: FormGroup | any;
   Empresponse: empresponse[] = [];
   user:any
-  
+  email:any
 
   constructor(
     private authService: AuthService,
@@ -52,9 +52,11 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.formGroup.value).subscribe(result => {
      //alert(result);
         if (result == true) {
+          this.email= this.formGroup.get('emailid').value;
+          
             //localStorage.setItem('token',result.token);
           this._route.navigate(['/empdashboard']);
-          
+          localStorage.setItem('email',this.email);
         } else if (result == false){
           //this._route.navigate(['/dash']);
           this.msg = 'Invalid username or password';
