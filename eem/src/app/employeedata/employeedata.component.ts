@@ -35,14 +35,11 @@ public createuser() {
      
      this.crudService.createuser(this.formGroup.value).subscribe(result => {
      //alert(result);
-       if (result == "True") {
-           //localStorage.setItem('token',result.token);
-         alert (result);
+       if (result == true) {
+         alert ("Employee Added Succesfully");
          
-       } else {
-         //this._route.navigate(['/dash']);
-        // this.msg = 'Invalid username or password';
-        alert (result);
+       } else if ((result == false)) {
+        alert ("Unable Added Employee");
        }
      })
    }

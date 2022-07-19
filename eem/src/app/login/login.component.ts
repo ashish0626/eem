@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
       //alert(result);
         if (result == "True") {
             //localStorage.setItem('token',result.token);
-          this._route.navigate(['/dash']);
+          this._route.navigate(['/empdashboard']);
           
         } else {
           //this._route.navigate(['/dash']);

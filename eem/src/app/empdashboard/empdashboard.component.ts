@@ -12,11 +12,7 @@ export class EmpdashboardComponent implements OnInit {
   constructor(private crudService: CrudService,) { }
   public emailid?: any;
   ngOnInit(): void {
-    this.crudService.getData().subscribe(data =>{
-      
-      console.warn("data",data);
-      this.user=data;
-    })
+    this.ReloadData();
   }
   ExportTOExcel()
   {
@@ -37,13 +33,20 @@ export class EmpdashboardComponent implements OnInit {
         //alert(result)
        if (result == true) {
              
-           //alert (result);
-           
+           alert ("User Delete Successfully");
+           this.ReloadData();
          }else if(result == false) {
-          //alert (result);
+          alert ("User not delete ");
          }
        })
      }
    
+     ReloadData(){
+      this.crudService.getData().subscribe(data =>{
+      
+        console.warn("data",data);
+        this.user=data;
+      })
+     }
   
 }
