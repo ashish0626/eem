@@ -8,9 +8,9 @@ import * as XLSX from 'xlsx';
 })
 export class EmpdashboardComponent implements OnInit {
   user:any;
-  @ViewChild('TABLE') table: ElementRef | undefined;
+  @ViewChild('ExcelDownload') table: ElementRef | undefined;
   constructor(private crudService: CrudService,) { }
-
+  public emailid?: any;
   ngOnInit(): void {
     this.crudService.getData().subscribe(data =>{
       
@@ -28,4 +28,26 @@ export class EmpdashboardComponent implements OnInit {
     XLSX.writeFile(wb, 'SheetJS.xlsx');
     
   }
+  public Delete (emailid : string){
+   // alert(emailid)
+    this.crudService.delete(emailid).subscribe(data =>{
+      
+      console.warn("data",data);
+      this.user=data;
+    })
+  }
+
+  public deleteuser(emailid : string) {
+   
+       //alert(emailid)
+       this.crudService.deleteuser(emailid).subscribe(result => {
+       if (result == "True") {
+             
+           alert (result);
+           
+         } 
+       })
+     }
+   
+  
 }

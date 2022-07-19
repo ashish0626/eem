@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
   }
   initform() {
     this.formGroup = new FormGroup({
-      Username: new FormControl('', [Validators.required]),
-      Password : new FormControl ('',[Validators.required])
+      emailid: new FormControl('', [Validators.required]),
+      userpwd : new FormControl ('',[Validators.required])
     });
   }
   
@@ -50,7 +50,8 @@ export class LoginComponent implements OnInit {
    if (this.formGroup.valid) {
       
       this.authService.login(this.formGroup.value).subscribe(result => {
-        if (result.message == "true") {
+      //alert(result);
+        if (result == "True") {
             //localStorage.setItem('token',result.token);
           this._route.navigate(['/dash']);
           

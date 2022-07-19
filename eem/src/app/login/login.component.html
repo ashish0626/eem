@@ -3,10 +3,10 @@
         <mat-toolbar color="primary">Login Page</mat-toolbar>
         <form  fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup" (ngSubmit)="loginProcess()">
             <mat-form-field>
-            <input matInput placeholder="Username" formControlName="Username"/>
+            <input matInput placeholder="EmailID" formControlName="emailid"/>
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="password" placeholder="Password" formControlName="Password"/>
+                <input matInput type="password" placeholder="Password" formControlName="userpwd"/>
             </mat-form-field>
             <button mat-raised-button type="submit">Login</button>
             <span>{{ msg }}</span>

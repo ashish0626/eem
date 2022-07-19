@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CrudService } from '../crud.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class EmployeedataComponent implements OnInit {
   formGroup:FormGroup | any;
-  constructor(
+  constructor(private crudService: CrudService,
     
   ) { }
 
@@ -18,14 +19,32 @@ export class EmployeedataComponent implements OnInit {
   }
 initform(){
   this.formGroup= new FormGroup({
-    FirstName : new FormControl (''),
-    LastName : new FormControl (''),
-    EmailID : new FormControl (''),
-    Password : new FormControl (''),
-    Role : new FormControl ('')
+    fname : new FormControl (''),
+    lname : new FormControl (''),
+    emailid : new FormControl (''),
+    userpwd : new FormControl (''),
+    userRole : new FormControl ('')
   });
 }
 public regProcess(){
   return "Test";
 }
+
+public createuser() {
+  if (this.formGroup.valid) {
+     
+     this.crudService.createuser(this.formGroup.value).subscribe(result => {
+     //alert(result);
+       if (result == "True") {
+           //localStorage.setItem('token',result.token);
+         alert (result);
+         
+       } else {
+         //this._route.navigate(['/dash']);
+        // this.msg = 'Invalid username or password';
+        alert (result);
+       }
+     })
+   }
+ }
 }
