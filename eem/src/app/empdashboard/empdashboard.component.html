@@ -21,6 +21,7 @@
                 <td>{{empresponse.Password}}</td>
                 <td>{{empresponse.Role}}</td>
                 <td> <button mat-raised-button color="accent" (click)="usertoadmin(empresponse.EmailID)">MakeAdmin</button></td>
+                <td> <button mat-raised-button color="warn" (click)="resetpassword(empresponse.EmailID)">Reset</button> </td>
                 <td> <button mat-raised-button color="warn" (click)="deleteuser(empresponse.EmailID)">Delete</button> </td>
                 
             </tr>

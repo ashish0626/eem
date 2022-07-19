@@ -82,6 +82,14 @@ export class CrudService {
       })
   );
   }
+  resetpassword(emailid : any):Observable<any>{
+    return this.http.post(this.apiServer + "passwordChange",{emailid: emailid},{responseType: 'json'}).pipe(
+      catchError(error => {
+          this.errorMsg = error.message;
+          return of([this.getServerErrorMessage]);
+      })
+  );
+  }
    ImportData (emailid : any){
     //alert(emailid)
     return this.http.post(this.apiServer + "excel",{emailid: emailid},{responseType: 'json'}).pipe(
