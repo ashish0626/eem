@@ -42,7 +42,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   } ,
   {
-    path: 'table',
+    path: 'importexcel',
     component:TableBasicComponent
   },
   {

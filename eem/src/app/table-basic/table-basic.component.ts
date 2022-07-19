@@ -1,16 +1,18 @@
-import {Component,ViewChild, ElementRef, OnInit} from '@angular/core';
- import * as XLSX from 'xlsx';
- type AOA = any[][];
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import * as XLSX from 'xlsx';
+import { CrudService } from '../crud.service';
+type AOA = any[][];
 @Component({
   selector: 'app-table-basic',
   templateUrl: './table-basic.component.html',
   styleUrls: ['./table-basic.component.scss']
 })
-export class TableBasicComponent    {
-  data: AOA = [[1, 2], [3, 4]];
+export class TableBasicComponent {
+  data: AOA = [[]];
   wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
   fileName: string = 'SheetJS.xlsx';
-  constructor() { }
+  emailid: any
+  constructor(private crudService: CrudService,) { }
 
   ngOnInit(): void {
   }
@@ -45,6 +47,19 @@ export class TableBasicComponent    {
     /* save to file */
     XLSX.writeFile(wb, this.fileName);
   }
-  
+
+  public ImportData(emailid: string) {
+    alert(emailid)
+    this.crudService.ImportData(emailid).subscribe(result => {
+      //alert(result)
+      if (result == true) {
+
+        alert("User Delete Successfully");
+
+      } else if (result == false) {
+        alert("User not delete ");
+      }
+    })
+  }
 }
 
