@@ -8,9 +8,14 @@
     </div>
 
     <mat-divider></mat-divider>
+    <div *ngIf="isShownadmin">
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/empdashboard">  DashBoard</a> 
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/employee">Add Employee</a>
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/importexcel">Import Excel</a>
+    </div>
+    <div *ngIf="isShownuser">
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/importexcel">Import Excel</a>
+    </div>
     <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/dash">Dashboard</a> -->
     <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/table">Import</a> -->
     <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/login">Logout</a> -->

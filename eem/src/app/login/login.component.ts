@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
             this._route.navigate(['/empdashboard']);
           } else {
             alert("Role is not assign");
+            location.reload();
           }
           
           localStorage.setItem('email', this.email);
