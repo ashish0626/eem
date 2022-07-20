@@ -97,7 +97,9 @@ export class LoginComponent implements OnInit {
         this.toggleShow();
         localStorage.setItem('role', this.role);
         this.roleval = localStorage.getItem('role');
-        alert(this.roleval)
+       // alert(this.roleval)
+      } else {
+         alert("Employee doesn't exits");
       }
     })
   }
