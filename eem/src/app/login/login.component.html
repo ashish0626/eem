@@ -1,19 +1,33 @@
-<div fxLayoutAlign="center center" fxFill class="main-div">
-    <mat-card fxFlex="25">
-        <mat-toolbar color="primary">Login Page</mat-toolbar>
-        <form  fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup" (ngSubmit)="loginProcess()">
+<div *ngIf="isShownemail">
+    <div fxLayoutAlign="center center" fxFill class="main-div">
+        <mat-card fxFlex="25">
+            <mat-toolbar color="primary">Login Page</mat-toolbar>
+            <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup"
+                (ngSubmit)="empRole(email)">
             <mat-form-field>
-            <input matInput placeholder="EmailID" formControlName="emailid"/>
+                <input matInput placeholder="EmailID" formControlName="emailid" />
             </mat-form-field>
-            <mat-form-field>
-                <input matInput type="password" placeholder="Password" formControlName="userpwd"/>
-            </mat-form-field>
-            <button mat-raised-button type="submit">Login</button>
-            <span>{{ msg }}</span>
+            <button mat-raised-button type="submit">Submit</button>
         </form>
-    </mat-card>
+        </mat-card>
+    </div>
 </div>
 
-
-
-
+<div *ngIf="isShown">
+    <div fxLayoutAlign="center center" fxFill class="main-div" >
+        <mat-card fxFlex="25">
+            <mat-toolbar color="primary">Login Page</mat-toolbar>
+            <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup"
+                (ngSubmit)="loginProcess()">
+                <mat-form-field>
+                    <input matInput placeholder="EmailID" formControlName="emailid" />
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Password" formControlName="userpwd" />
+                </mat-form-field>
+                <button mat-raised-button type="submit">Login</button>
+                <span>{{ msg }}</span>
+            </form>
+        </mat-card>
+    </div>
+</div>

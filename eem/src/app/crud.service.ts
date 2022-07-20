@@ -99,6 +99,15 @@ export class CrudService {
       })
   );
    }
+   empRole (emailid : any){
+    //alert(emailid)
+    return this.http.post(this.apiServer + "checkRole",{emailid: emailid},{responseType: 'json'}).pipe(
+      catchError(error => {
+          this.errorMsg = error.message;
+          return of([this.getServerErrorMessage]);
+      })
+  );
+   }
   private getServerErrorMessage(error: HttpErrorResponse): string {
      switch (error.status) {
          case 404: {

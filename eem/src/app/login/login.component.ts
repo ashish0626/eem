@@ -9,7 +9,7 @@ import { MyServiceService } from '../my-service.service';
 
 import { empresponse } from '../empresponse';
 
- 
+
 
 @Component({
   selector: 'app-login',
@@ -20,12 +20,16 @@ import { empresponse } from '../empresponse';
 export class LoginComponent implements OnInit {
   public books: any;
   public status: any;
-  
+
   formGroup: FormGroup | any;
   Empresponse: empresponse[] = [];
-  user:any
-  email:any
+  user: any
+  email: any
+  role: any
+  roleval: any
 
+  isShown: boolean = false;
+  isShownemail: boolean = true;
   constructor(
     private authService: AuthService,
     private crudService: CrudService,
@@ -34,38 +38,72 @@ export class LoginComponent implements OnInit {
     private _route: Router
   ) { }
   msg = "";
-  
+
   ngOnInit() {
     this.initform();
-    
+
   }
   initform() {
     this.formGroup = new FormGroup({
       emailid: new FormControl('', [Validators.required]),
-      userpwd : new FormControl ('',[Validators.required])
+      userpwd: new FormControl('', [Validators.required])
     });
   }
-  
+
   public loginProcess() {
-   if (this.formGroup.valid) {
-      
+    if (this.formGroup.valid) {
+
       this.authService.login(this.formGroup.value).subscribe(result => {
-     //alert(result);
+        //alert(result);
         if (result == true) {
-          this.email= this.formGroup.get('emailid').value;
+          this.email = this.formGroup.get('emailid').value;
+
+          //localStorage.setItem('token',result.token);
+
+          if (this.role == "user") {
+            
+            this._route.navigate(['/importexcel'])
+          } else if (this.role == "admin") {
+            this._route.navigate(['/empdashboard']);
+          } else {
+            alert("Role is not assign");
+          }
           
-            //localStorage.setItem('token',result.token);
-          this._route.navigate(['/empdashboard']);
-          localStorage.setItem('email',this.email);
-        } else if (result == false){
-          //this._route.navigate(['/dash']);
+          localStorage.setItem('email', this.email);
+        } else if (result == false) {
+          
           this.msg = 'Invalid username or password';
         }
       })
     }
   }
-   
-  
+
+  public empRole(emailid: string) {
+    this.email = this.formGroup.get('emailid').value;
+    //alert(this.email)
+    this.crudService.empRole(this.email).subscribe(result => {
+      //alert (result)
+      this.role = result;
+      // if (this.role == "user") {
+      //     alert ("user");
+      //     localStorage.setItem('role',this.role);
+      //   }else if(this.role == "admin") {
+      //     localStorage.setItem('role',this.role);
+      //   } else {
+      //     alert ("Role is not assign");
+      //   }
+      if (this.role != null) {
+        this.toggleShow();
+        localStorage.setItem('role', this.role);
+        this.roleval = localStorage.getItem('role');
+        alert(this.roleval)
+      }
+    })
+  }
+  toggleShow() {
+    this.isShown = !this.isShown;
+    this.isShownemail = !this.isShownemail;
+  }
 
   check(uname: string, p: string) {
     var output = this.service.checkusernameandpassword(uname, p);
@@ -77,5 +115,5 @@ export class LoginComponent implements OnInit {
     }
   }
 
- 
+
 }

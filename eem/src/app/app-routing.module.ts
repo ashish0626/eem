@@ -34,7 +34,7 @@ const routes: Routes = [
   },{
     path:'employee',
     component: EmployeedataComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path:'data',
@@ -43,11 +43,13 @@ const routes: Routes = [
   } ,
   {
     path: 'importexcel',
-    component:TableBasicComponent
+    component:TableBasicComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'empdashboard',
-    component:EmpdashboardComponent
+    component:EmpdashboardComponent,
+    canActivate: [AuthGuard]
   },
   ]
 }
