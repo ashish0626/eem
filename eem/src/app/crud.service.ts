@@ -10,6 +10,7 @@ import { empresponse } from './empresponse';
 })
 export class CrudService {
   private apiServer = "http://20.115.10.86:7003/";
+  private apiServerExcel = "http://20.115.10.86:6002/";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -92,7 +93,7 @@ export class CrudService {
   }
    ImportData (emailid : any){
     //alert(emailid)
-    return this.http.post(this.apiServer + "excel",{emailid: emailid},{responseType: 'json'}).pipe(
+    return this.http.post(this.apiServerExcel + "excel",{emailid: emailid},{responseType: 'json'}).pipe(
       catchError(error => {
           this.errorMsg = error.message;
           return of([this.getServerErrorMessage]);
