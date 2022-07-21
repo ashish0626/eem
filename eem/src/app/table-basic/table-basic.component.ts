@@ -14,9 +14,9 @@ export class TableBasicComponent {
   wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
   fileName: string = 'SheetJS.xlsx';
   emailid: any;
- public file: any ;
- result : any
-
+  public file: any;
+  result: any;
+  addemailid: any;
   public requestOptions: any;
 
   constructor(private crudService: CrudService) { }
@@ -34,7 +34,7 @@ export class TableBasicComponent {
     this.file = evt.target.files[0];
     // alert(evt.target.value);
 
-    
+
 
 
 
@@ -69,16 +69,6 @@ export class TableBasicComponent {
   }
 
   public ImportData() {
-    // // alert("Email ID:"+this.emailid + "\n File name: " + this.file?.name);
-    // if (this.file) {
-    //   // console.log(this.file.type);
-    //   this.crudService.ImportData(this.file, this.emailid).subscribe((result) => {
-    //     alert(result)
-    //   });
-    // } else {
-    //   alert("File not uploaded!");
-    // }
-
     var formdata = new FormData();
     formdata.append("emailid", this.emailid);
     // formdata.append("excel", evt.target.files[0] ,"/C:/Users/mangalda/Downloads/Sample (6).xlsx");
@@ -97,9 +87,27 @@ export class TableBasicComponent {
       })
       // .then(result =>this.result=result)
       .catch(error => console.log('error', error));
-
-    console.log();
   }
 
-   
+public ImportDataEmail() {
+    //alert(this.addemailid)
+    var formdata = new FormData();
+    formdata.append("emailid", this.addemailid);
+    // formdata.append("excel", evt.target.files[0] ,"/C:/Users/mangalda/Downloads/Sample (6).xlsx");
+    formdata.append("excel", this.file, this.file.name);
+    this.requestOptions = {
+      method: 'POST',
+      body: formdata,
+      redirect: 'follow'
+    };
+
+    fetch("http://20.115.10.86:6002/excel", this.requestOptions)
+      .then(response => response.text())
+      .then(result => {
+        console.warn(result);
+        alert(result);
+      })
+      // .then(result =>this.result=result)
+      .catch(error => console.log('error', error));
+  }
 }

@@ -3,7 +3,8 @@
 <!-- <span >EmailId {{emailid}}</span> -->
 <input type="text" class="advancedSearchTextBox" [(ngModel)]="emailid">
 <h2> Additional Email ID</h2><br>
-<input type="text" class="advancedSearchTextBox"> <br />
+<input type="text" class="advancedSearchTextBox" [(ngModel)]="addemailid"> &nbsp;
+<button mat-raised-button color="primary" (click)="ImportDataEmail()">Send</button> <br />
 <input type="file" (change)="onFileChange($event)" multiple="false" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
 <table class="table">
 	<tbody>
