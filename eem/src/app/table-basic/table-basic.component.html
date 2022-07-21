@@ -1,26 +1,24 @@
-
 <h1>EEM RPA Tool</h1>
 <h2> Confirm your email</h2><br>
 <!-- <span >EmailId {{emailid}}</span> -->
-<input type="text" class="advancedSearchTextBox" value= {{emailid}}>
+<input type="text" class="advancedSearchTextBox" [(ngModel)]="emailid">
 <h2> Additional Email ID</h2><br>
-<input type="text"  class="advancedSearchTextBox" > <br/>
-<input type="file" (change)="onFileChange($event)" multiple="false" />
-	<table class="table">
-		<tbody>
-      <th>
-      <tr *ngFor="let row of data">
-			<td *ngFor="let val of row">
-				{{val}}
-			</td>
-		</tr>
-  </th>
-    </tbody>
-	</table>
-	<!-- <button (click)="export()">Export!</button> -->
-	<!-- <button (click)="ImportData()">Import!</button> -->
-	<button mat-raised-button color="primary" (click)="ImportData(emailid)">Submit</button>
-	<!-- <button mat-raised-button color="primary" (click)="ImportData(emailid)">SampleData</button> --> <br/>
-	<!-- <a >SampleData</a> -->
-	<a href="assets/files/Sample.xlsx" download="Sample.xlsx" class="btn btn-primary">Download Sample Excel</a>
-	
+<input type="text" class="advancedSearchTextBox"> <br />
+<input type="file" (change)="onFileChange($event)" multiple="false" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
+<table class="table">
+	<tbody>
+		<th>
+			<tr *ngFor="let row of data">
+				<td *ngFor="let val of row">
+					{{val}}
+				</td>
+			</tr>
+		</th>
+	</tbody>
+</table>
+<!-- <button (click)="export()">Export!</button> -->
+<!-- <button (click)="ImportData()">Import!</button> -->
+<button mat-raised-button color="primary" (click)="ImportData()">Submit</button>
+<!-- <button mat-raised-button color="primary" (click)="ImportData(emailid)">SampleData</button> --> <br />
+<!-- <a >SampleData</a> -->
+<a href="assets/files/Sample.xlsx" download="Sample.xlsx" class="btn btn-primary">Download Sample Excel</a>

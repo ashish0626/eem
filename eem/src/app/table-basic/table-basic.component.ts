@@ -6,24 +6,39 @@ type AOA = any[][];
 @Component({
   selector: 'app-table-basic',
   templateUrl: './table-basic.component.html',
-  styleUrls: ['./table-basic.component.scss']
+  styleUrls: ['./table-basic.component.scss'],
 })
+
 export class TableBasicComponent {
   data: AOA = [[]];
   wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
   fileName: string = 'SheetJS.xlsx';
-  emailid: any
-  constructor(private crudService: CrudService,) { }
+  emailid: any;
+ public file: any ;
+ result : any
+
+  public requestOptions: any;
+
+  constructor(private crudService: CrudService) { }
 
   ngOnInit(): void {
-    this.emailid= localStorage.getItem('email');
+    this.emailid = localStorage.getItem('email');
     //alert (this.emailid)
     //console.warn(localStorage.getItem('email'));
   }
   onFileChange(evt: any) {
     /* wire up file reader */
-    const target: DataTransfer = <DataTransfer>(evt.target);
+    const target: DataTransfer = <DataTransfer>evt.target;
     if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+
+    this.file = evt.target.files[0];
+    // alert(evt.target.value);
+
+    
+
+
+
+
     const reader: FileReader = new FileReader();
     reader.onload = (e: any) => {
       /* read workbook */
@@ -35,11 +50,12 @@ export class TableBasicComponent {
       const ws: XLSX.WorkSheet = wb.Sheets[wsname];
 
       /* save data */
-      this.data = <AOA>(XLSX.utils.sheet_to_json(ws, { header: 1 }));
+      this.data = <AOA>XLSX.utils.sheet_to_json(ws, { header: 1 });
       console.log(this.data);
     };
     reader.readAsBinaryString(target.files[0]);
   }
+
   export(): void {
     /* generate worksheet */
     const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(this.data);
@@ -52,18 +68,38 @@ export class TableBasicComponent {
     XLSX.writeFile(wb, this.fileName);
   }
 
-  public ImportData(emailid: string) {
-    alert(emailid)
-    this.crudService.ImportData(emailid).subscribe(result => {
-      //alert(result)
-      if (result == true) {
+  public ImportData() {
+    // // alert("Email ID:"+this.emailid + "\n File name: " + this.file?.name);
+    // if (this.file) {
+    //   // console.log(this.file.type);
+    //   this.crudService.ImportData(this.file, this.emailid).subscribe((result) => {
+    //     alert(result)
+    //   });
+    // } else {
+    //   alert("File not uploaded!");
+    // }
 
-        alert("User Delete Successfully");
+    var formdata = new FormData();
+    formdata.append("emailid", this.emailid);
+    // formdata.append("excel", evt.target.files[0] ,"/C:/Users/mangalda/Downloads/Sample (6).xlsx");
+    formdata.append("excel", this.file, this.file.name);
+    this.requestOptions = {
+      method: 'POST',
+      body: formdata,
+      redirect: 'follow'
+    };
 
-      } else if (result == false) {
-        alert("User not delete ");
-      }
-    })
+    fetch("http://20.115.10.86:6002/excel", this.requestOptions)
+      .then(response => response.text())
+      .then(result => {
+        console.warn(result);
+        alert(result);
+      })
+      // .then(result =>this.result=result)
+      .catch(error => console.log('error', error));
+
+    console.log();
   }
-}
 
+   
+}
