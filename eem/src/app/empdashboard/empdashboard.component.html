@@ -20,9 +20,9 @@
                 <td>{{empresponse.EmailID}}</td>
                 <!-- <td>{{empresponse.Password}}</td> -->
                 <td>{{empresponse.Role}}</td>
-                <td> <button mat-raised-button color="accent" (click)="usertoadmin(empresponse.EmailID)">MakeAdmin</button></td>
-                <td> <button mat-raised-button color="warn" (click)="resetpassword(empresponse.EmailID)">Change Password</button> </td>
-                <td> <button mat-raised-button color="warn" (click)="deleteuser(empresponse.EmailID)">Delete</button> </td>
+                <td> <button class="makeadmin" (click)="usertoadmin(empresponse.EmailID)">MakeAdmin</button></td>
+                <td> <button class="changepassword"  (click)="resetpassword(empresponse.EmailID)">Change Password</button> </td>
+                <td> <button class="delete" (click)="deleteuser(empresponse.EmailID)">Delete</button> </td>
                 
             </tr>
 

@@ -1,7 +1,7 @@
 <div *ngIf="isShownemail">
     <div fxLayoutAlign="center center" fxFill class="main-div">
         <mat-card fxFlex="25">
-            <mat-toolbar color="primary">Login Page</mat-toolbar>
+            <mat-toolbar class="login">EEM Login</mat-toolbar>
             <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup"
                 (ngSubmit)="empRole(email)">
             <mat-form-field>
@@ -16,7 +16,7 @@
 <div *ngIf="isShown">
     <div fxLayoutAlign="center center" fxFill class="main-div" >
         <mat-card fxFlex="25">
-            <mat-toolbar color="primary">Login Page</mat-toolbar>
+            <mat-toolbar class="login">EEM Login</mat-toolbar>
             <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup"
                 (ngSubmit)="loginProcess()">
                 <mat-form-field>
