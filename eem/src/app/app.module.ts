@@ -38,6 +38,9 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { TableBasicComponent } from './table-basic/table-basic.component';
 import { EmpdashboardComponent } from './empdashboard/empdashboard.component';
 
+
+import {HashLocationStrategy,LocationStrategy} from '@angular/common'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,6 +89,10 @@ import { EmpdashboardComponent } from './empdashboard/empdashboard.component';
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptor,
       multi:true
+    },
+    {
+      provide:LocationStrategy,
+      useClass:HashLocationStrategy
     }
   ],
   bootstrap: [AppComponent]
