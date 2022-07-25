@@ -20,8 +20,13 @@
                 <td>{{empresponse.EmailID}}</td>
                 <!-- <td>{{empresponse.Password}}</td> -->
                 <td>{{empresponse.Role}}</td>
-                <td> <button class="makeadmin" (click)="usertoadmin(empresponse.EmailID)">MakeAdmin</button></td>
-                <td> <button class="makeuser" (click)="admintouser(empresponse.EmailID)">MakeUser</button></td>
+                <div *ngIf="empresponse.Role =='user'">
+                    <td> <button class="makeadmin" (click)="usertoadmin(empresponse.EmailID)">MakeAdmin</button></td>
+                </div>
+                <div *ngIf="empresponse.Role =='admin'">
+                    <td> <button class="makeuser" (click)="admintouser(empresponse.EmailID)">Make User</button></td>
+                </div>
+                
                 <td> <button class="changepassword"  (click)="resetpassword(empresponse.EmailID)">Change Password</button> </td>
                 <td> <button class="delete" (click)="deleteuser(empresponse.EmailID)">Delete</button> </td>
                 
