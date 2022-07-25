@@ -10,7 +10,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (localStorage.getItem('role') == 'admin' || localStorage.getItem('role') == 'user') {
+    if (localStorage.getItem('role') == 'admin' || localStorage.getItem('role') == 'Admin' ||localStorage.getItem('role') == 'user' ||localStorage.getItem('role') == 'User') {
       return true;
     }
     else {
