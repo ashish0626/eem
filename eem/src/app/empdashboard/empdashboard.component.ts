@@ -52,6 +52,18 @@ export class EmpdashboardComponent implements OnInit {
         }
       })
     }
+    public admintouser(emailid : string) {
+   
+      //alert(emailid)
+      this.crudService.admintouser(emailid).subscribe(result => {
+      if (result == "True") {
+          alert ("Admin become user  ");
+          this.ReloadData();
+        }else if(result == "False") {
+         alert ("Can not change ");
+        }
+      })
+    }
     public resetpassword(emailid : string) {
    
       //alert(emailid)

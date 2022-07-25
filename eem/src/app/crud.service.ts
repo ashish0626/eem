@@ -83,6 +83,14 @@ export class CrudService {
       })
   );
   }
+  admintouser(emailid : any):Observable<any>{
+    return this.http.post(this.apiServer + "makeUser",{emailid: emailid},{responseType: 'json'}).pipe(
+      catchError(error => {
+          this.errorMsg = error.message;
+          return of([this.getServerErrorMessage]);
+      })
+  );
+  }
   resetpassword(emailid : any):Observable<any>{
     return this.http.post(this.apiServer + "passwordChange",{emailid: emailid},{responseType: 'json'}).pipe(
       catchError(error => {

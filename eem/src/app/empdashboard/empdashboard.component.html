@@ -21,6 +21,7 @@
                 <!-- <td>{{empresponse.Password}}</td> -->
                 <td>{{empresponse.Role}}</td>
                 <td> <button class="makeadmin" (click)="usertoadmin(empresponse.EmailID)">MakeAdmin</button></td>
+                <td> <button class="makeuser" (click)="admintouser(empresponse.EmailID)">MakeUser</button></td>
                 <td> <button class="changepassword"  (click)="resetpassword(empresponse.EmailID)">Change Password</button> </td>
                 <td> <button class="delete" (click)="deleteuser(empresponse.EmailID)">Delete</button> </td>
                 
