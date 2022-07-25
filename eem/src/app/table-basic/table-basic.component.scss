@@ -18,3 +18,20 @@ tbody tr:nth-child(odd) {
   margin: 8px 0;
   box-sizing: border-box;
 }
+
+mat-card{
+  width: fit-content;
+  margin-top: 10px;
+//   background-color: grey;
+//   color: white;
+}
+
+button{
+  margin: 10px 10px 10px 0px;
+}
+
+mat-icon {
+  font-size: 7px !important;
+  height: 7px !important;
+  width: 10px !important;
+}

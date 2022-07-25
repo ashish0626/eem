@@ -1,11 +1,18 @@
 <h1>EEM RPA Tool</h1>
-<h2> Confirm your email</h2><br>
-<!-- <span >EmailId {{emailid}}</span> -->
+<h2> Confirm your email</h2>
 <input type="text" class="advancedSearchTextBox" [(ngModel)]="emailid">
-<h2> Additional Email ID</h2><br>
+<h2> Additional Email ID</h2>
 <input type="text" class="advancedSearchTextBox" [(ngModel)]="addemailid"> &nbsp;
-<button mat-raised-button color="primary" (click)="ImportDataEmail()">Send</button> <br />
-<input type="file" (change)="onFileChange($event)" multiple="false" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
+<button mat-raised-button color="primary" (click)="ImportDataEmail()" [disabled]="!validFileFlag">Send</button> <br />
+<!-- <input type="file" (change)="onFileChange($event)" multiple="false"
+	accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" /> -->
+<button mat-raised-button color="primary" type="button" (click)="fileInput.click()">
+	<span>Choose File</span>
+	<input #fileInput type="file" (change)="onFileChange($event)" multiple="false" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"  style="display:none;" />
+</button>
+{{selectedFileName}}
+
+
 <table class="table">
 	<tbody>
 		<th>
@@ -17,9 +24,15 @@
 		</th>
 	</tbody>
 </table>
-<!-- <button (click)="export()">Export!</button> -->
-<!-- <button (click)="ImportData()">Import!</button> -->
-<button mat-raised-button color="primary" (click)="ImportData()">Submit</button>
-<!-- <button mat-raised-button color="primary" (click)="ImportData(emailid)">SampleData</button> --> <br />
-<!-- <a >SampleData</a> -->
-<a href="assets/files/Sample.xlsx" download="Sample.xlsx" class="btn btn-primary">Download Sample Excel</a>
+<button mat-raised-button color="primary" (click)="ImportData()" [disabled]="!validFileFlag">Submit</button>
+<a mat-raised-button color="secondary" href="assets/files/Sample.xlsx" download="Sample.xlsx">Download Sample Excel</a>
+
+<mat-card class="example-card">
+	<mat-card-title>Instructions</mat-card-title>
+	<mat-card-content>
+		<mat-list role="list">
+			<mat-list-item role="listitem"><mat-icon matListIcon>lens</mat-icon>Upload the excel sheet containing Report IDs to be processed.</mat-list-item>
+			<mat-list-item role="listitem"><mat-icon matListIcon>lens</mat-icon>Once the processing is complete, you will receive an email from the bot which will contain the link to download the files.</mat-list-item>
+		</mat-list>
+	</mat-card-content>
+</mat-card>
