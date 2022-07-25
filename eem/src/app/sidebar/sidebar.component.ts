@@ -16,10 +16,10 @@ export class SidebarComponent implements OnInit {
   }
   toggleShow() {
     this.roleval = localStorage.getItem('role');
-    if (this.roleval == "user") {
+    if (this.roleval == "user" || this.roleval == "User") {
      // this.isShownuser = true;
       this.isShownuser = !this.isShownuser;
-    } else if (this.roleval == "admin"){
+    } else if (this.roleval == "admin" || this.roleval == "Admin"){
       this.isShownadmin = !this.isShownadmin;
     }
     
