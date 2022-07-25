@@ -20,10 +20,10 @@
                 <td>{{empresponse.EmailID}}</td>
                 <!-- <td>{{empresponse.Password}}</td> -->
                 <td>{{empresponse.Role}}</td>
-                <div *ngIf="empresponse.Role =='user'">
+                <div *ngIf="empresponse.Role =='user' || empresponse.Role == 'User'">
                     <td> <button class="makeadmin" (click)="usertoadmin(empresponse.EmailID)">MakeAdmin</button></td>
                 </div>
-                <div *ngIf="empresponse.Role =='admin'">
+                <div *ngIf="empresponse.Role =='admin' || empresponse.Role == 'Admin'">
                     <td> <button class="makeuser" (click)="admintouser(empresponse.EmailID)">Make User</button></td>
                 </div>
                 

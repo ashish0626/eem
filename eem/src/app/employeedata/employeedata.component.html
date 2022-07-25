@@ -15,7 +15,12 @@
         <input matInput type="Password" placeholder="Password" formControlName="userpwd" />
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Role" formControlName="userRole" />
+        <!-- <input matInput placeholder="Role" formControlName="userRole" /> -->
+        <mat-label>Choose a role</mat-label>
+        <mat-select formControlName="userRole">
+          <mat-option value="Admin"> Admin </mat-option>
+          <mat-option value="User">User</mat-option>
+        </mat-select>
       </mat-form-field>
       <button mat-raised-button type="submit" (click)="createuser()">Submit</button>
 
