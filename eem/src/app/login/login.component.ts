@@ -60,10 +60,10 @@ export class LoginComponent implements OnInit {
 
           //localStorage.setItem('token',result.token);
 
-          if (this.role == "user") {
+          if (this.role == "user" || this.role == "User") {
             
             this._route.navigate(['/importexcel'])
-          } else if (this.role == "admin") {
+          } else if (this.role == "admin" || this.role == "Admin") {
             this._route.navigate(['/empdashboard']);
           } else {
             alert("Role is not assign");
