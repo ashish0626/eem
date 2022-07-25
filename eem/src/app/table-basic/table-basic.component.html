@@ -3,10 +3,10 @@
 <input type="text" class="advancedSearchTextBox" [(ngModel)]="emailid">
 <h2> Additional Email ID</h2>
 <input type="text" class="advancedSearchTextBox" [(ngModel)]="addemailid"> &nbsp;
-<button mat-raised-button color="primary" (click)="ImportDataEmail()" [disabled]="!validFileFlag">Send</button> <br />
+<button class="send" (click)="ImportDataEmail()" [disabled]="!validFileFlag">Send</button> <br />
 <!-- <input type="file" (change)="onFileChange($event)" multiple="false"
 	accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" /> -->
-<button mat-raised-button color="primary" type="button" (click)="fileInput.click()">
+<button mat-raised-button class="makeadmin" type="button" (click)="fileInput.click()">
 	<span>Choose File</span>
 	<input #fileInput type="file" (change)="onFileChange($event)" multiple="false" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"  style="display:none;" />
 </button>
@@ -24,8 +24,8 @@
 		</th>
 	</tbody>
 </table>
-<button mat-raised-button color="primary" (click)="ImportData()" [disabled]="!validFileFlag">Submit</button>
-<a mat-raised-button color="secondary" href="assets/files/Sample.xlsx" download="Sample.xlsx">Download Sample Excel</a>
+<button mat-raised-button class="makeadmin" (click)="ImportData()" [disabled]="!validFileFlag">Submit</button>
+<a mat-raised-button class="makeadmin" href="assets/files/Sample.xlsx" download="Sample.xlsx">Download Sample Excel</a>
 
 <mat-card class="example-card">
 	<mat-card-title>Instructions</mat-card-title>

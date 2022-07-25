@@ -1,6 +1,6 @@
 <div fxLayoutAlign="center center" fxFill class="main-div">
   <mat-card fxFlex="25">
-    <mat-toolbar color="primary">Employee Registration</mat-toolbar>
+    <mat-toolbar class="header">Employee Registration</mat-toolbar>
     <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup">
       <mat-form-field>
         <input matInput placeholder="First Name" formControlName="fname" />
@@ -22,7 +22,7 @@
           <mat-option value="User">User</mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-raised-button type="submit" (click)="createuser()">Submit</button>
+      <button mat-raised-button type="submit" (click)="createuser()" class="send">Submit</button>
 
     </form>
 

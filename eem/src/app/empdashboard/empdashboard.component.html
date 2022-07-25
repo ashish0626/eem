@@ -24,7 +24,7 @@
                     <td> <button class="makeadmin" (click)="usertoadmin(empresponse.EmailID)">MakeAdmin</button></td>
                 </div>
                 <div *ngIf="empresponse.Role =='admin' || empresponse.Role == 'Admin'">
-                    <td> <button class="makeuser" (click)="admintouser(empresponse.EmailID)">Make User</button></td>
+                    <td> <button class="makeuser" (click)="admintouser(empresponse.EmailID)"> Make User</button></td>
                 </div>
                 
                 <td> <button class="changepassword"  (click)="resetpassword(empresponse.EmailID)">Change Password</button> </td>
