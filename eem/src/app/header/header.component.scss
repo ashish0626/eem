@@ -4,5 +4,14 @@ ul li {
 
 .transparent{
   //position: absolute;
-  background-color:#01A982
+ // background-color:#01A982
+ background-color: transparent
+}
+
+.profile-card {
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
 }
